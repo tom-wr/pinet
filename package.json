@@ -14,5 +14,9 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/tom-wr/pinet/issues"
+  },
+  "dependencies": {
+    "express": "~4.6.1",
+    "socket.io": "~1.0.6"
   }
 }
