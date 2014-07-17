@@ -3,8 +3,8 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 /* GET home page. */
-app.get('/pibot', function(req, res) {
-  res.sendfile('');
+app.get('/', function(req, res) {
+  res.send('The great eye is open...');
 });
 
 io.on('connection', function(socket){
