@@ -9,7 +9,8 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket){
 	console.log('PIbot docking');
-})
+	io.emit('order', {led:'on'});
+});
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('piNET is awake and listening on port %d', http.address().port);
