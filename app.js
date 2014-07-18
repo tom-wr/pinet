@@ -10,6 +10,9 @@ app.get('/', function(req, res) {
 io.on('connection', function(socket){
 	console.log('PIbot docking');
 	io.emit('order', {led:'on'});
+	setTimeout(function(){
+		io.emit('order', {led:'off'});
+	}, 5000)
 });
 
 http.listen(process.env.PORT || 5000, function(){
