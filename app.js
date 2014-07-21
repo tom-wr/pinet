@@ -9,15 +9,17 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket){
 	console.log('Client connected');
+	
+	io.on('dock', function(data){
+		console.log('piBot '+ data.name + 'is online.');
+	})
+
 	io.emit('order', {led:'on'});
+	
 	setTimeout(function(){
 		io.emit('order', {led:'off'});
 	}, 5000);
 });
-
-io.on('dock', function(data){
-	console.log('piBot '+ data.name + 'is online.');
-})
 
 http.listen(process.env.PORT || 5000, function(){
 	console.log('piNET is awake and listening on port %d', http.address().port);
