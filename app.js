@@ -1,7 +1,6 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
-var wss =  require()
 
 /* GET home page. */
 app.get('/', function(req, res) {
@@ -13,7 +12,7 @@ io.on('connection', function(socket){
 	io.emit('order', {led:'on'});
 	setTimeout(function(){
 		io.emit('order', {led:'off'});
-	}, 5000)
+	}, 5000);
 });
 
 io.on('dock', function(data){
