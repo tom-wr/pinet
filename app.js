@@ -9,15 +9,16 @@ app.get('/', function(req, res) {
 
 io.on('connection', function(socket){
 	console.log('Client connected');
-	
-	io.on('dock', function(data){
-		console.log('piBot '+ data.name + 'is online.');
-	})
+	socket.emit('dock', {});
 
-	io.emit('order', {led:'on'});
+	io.on('docking', function(data){
+		console.log('piBot '+ data.name + 'is online.');
+	});
+
+	socket.emit('order', {led:'on'});
 	
 	setTimeout(function(){
-		io.emit('order', {led:'off'});
+		socket.emit('order', {led:'off'});
 	}, 5000);
 });
 
